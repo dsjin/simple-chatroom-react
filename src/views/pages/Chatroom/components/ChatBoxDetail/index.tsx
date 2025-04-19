@@ -1,6 +1,6 @@
-import { Box } from "@mui/material"
 import { StyledChatBoxDetailInner, StyledChatBoxDetailWrapper } from "./styled"
 import ChatBoxDetailItem from "../ChatBoxDetailItem"
+import ChatBoxDetailInput from "../ChatBoxDetailInput"
 
 function ChatBoxDetail() {
   return (
@@ -16,6 +16,9 @@ function ChatBoxDetail() {
           timestamp: (new Date()).getTime(),
         }}/>
       </StyledChatBoxDetailInner>
+      <ChatBoxDetailInput>
+
+      </ChatBoxDetailInput>
     </StyledChatBoxDetailWrapper>
   )
 }

@@ -8,7 +8,9 @@ export const StyledChatBoxDetailWrapper = styled(Box)(({ theme }) => ({
   borderBottomRightRadius: '2rem',
   backgroundColor: theme.palette.primary.light,
   scrollbarWidth: 'thin',
-  overflow: 'hidden'
+  overflow: 'hidden',
+  display: 'flex',
+  flexDirection: 'column'
 }))
 
 export const StyledChatBoxDetailInner = styled(Box)(({ theme }) => ({
@@ -16,6 +18,6 @@ export const StyledChatBoxDetailInner = styled(Box)(({ theme }) => ({
   height: '100%',
   overflowY: 'auto',
   scrollbarWidth: 'thin',
-  // background: 'black'
+  padding: '1rem',
+  boxSizing: 'border-box'
 }))
-
