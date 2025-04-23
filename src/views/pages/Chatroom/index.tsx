@@ -1,11 +1,14 @@
 import ChatBox from './components/ChatBox'
+import ChatContextProvider from './contexts/chat-context'
 import { StyledChatRoom } from './styled'
 
 function Chatroom() {
   return (
-    <StyledChatRoom>
-      <ChatBox />
-    </StyledChatRoom>
+    <ChatContextProvider>
+      <StyledChatRoom>
+        <ChatBox />
+      </StyledChatRoom>
+    </ChatContextProvider>
   )
 }
 

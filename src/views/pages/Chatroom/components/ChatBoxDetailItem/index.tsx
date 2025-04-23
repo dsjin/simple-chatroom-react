@@ -16,7 +16,7 @@ function ChatBoxDetailItem({ item }: ChatBoxDetailItem) {
         {item.owner.name} | {formatDate(item.timestamp)}
       </p>
       <StyledChatBubbleWrapper>
-        TestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTest
+        { item.text }
       </StyledChatBubbleWrapper>
     </StyledChatBoxDetailItemWrapper>
   )

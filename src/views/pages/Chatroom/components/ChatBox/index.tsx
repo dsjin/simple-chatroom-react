@@ -1,4 +1,3 @@
-import { Box, Typography } from "@mui/material"
 import { StyledChatBoxWrapper } from "./styled"
 import ChatBoxHeader from "../ChatBoxHeader"
 import ChatBoxDetail from "../ChatBoxDetail"
