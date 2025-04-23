@@ -1,5 +1,6 @@
-import { createContext, ReactElement, useContext, useEffect, useState } from 'react'
-import { ChatItem, ChatUser } from '../../../../../types/chat'
+import { v4 as uuidv4 } from 'uuid'
+import { createContext, ReactElement, useContext, useState } from 'react'
+import { ChatItem, ChatItemType, ChatUser } from '../../../../../types/chat'
 import useChat from '../../hooks/use-chat'
 
 type Props = {
@@ -11,6 +12,8 @@ export type ChatContextType = {
   chats: ChatItem[]
   chatUser: ChatUser | undefined
   chatUsers: ChatUser[]
+  busy: boolean
+  setBusy: (value: boolean) => void
   setChatText: (value: string) => void
   handleSubmitChat: (text: string) => void
   handleNewChatUser: (chatUser: ChatUser) => void
@@ -38,26 +41,7 @@ function ChatContextProvider({ children }: Props) {
     setChatUsers,
   } = useChat()
 
-  useEffect(() => {
-
-    const currentChatUser: ChatUser = {
-      id: '@dsjin',
-      name: 'DSJIN'
-    }
-
-    setChatUser(currentChatUser)
-
-    setChatUsers(
-      [
-        ...chatUsers,
-        currentChatUser
-      ]
-    )
-
-    return () => {
-      setChatUser(undefined)
-    }
-  }, [])
+  const [busy, setBusy] = useState<boolean>(false)
 
   return (
     <ChatContext.Provider
@@ -67,27 +51,51 @@ function ChatContextProvider({ children }: Props) {
         chatUser,
         chatUsers,
         setChatText,
+        busy,
+        setBusy,
         handleSubmitChat: (text: string) => {
           if (!text) {
             return
           }
-          setChats(
-            [
-              ...chats,
-              {
-                id: `chat-${chats.length + 1}`,
-                text: text,
-                owner: chatUser ? chatUser : {
-                  id: 'unknown',
-                  name: 'unknown'
-                },
-                timestamp: new Date().getTime(),
-              }
-            ]
-          )
+          setChats([
+            ...chats,
+            {
+              id: `chat-${chats.length + 1}`,
+              text: text,
+              owner: chatUser
+                ? chatUser
+                : {
+                    id: 'unknown',
+                    name: 'unknown',
+                  },
+              timestamp: new Date().getTime(),
+              type: ChatItemType.GENERAL,
+            },
+          ])
           setChatText('')
         },
-        handleNewChatUser: (chatUser: ChatUser) => {},
+        handleNewChatUser: (chatUser: ChatUser) => {
+          setBusy(true)
+
+          setTimeout(() => {
+            setChatUser(chatUser)
+
+            setChatUsers([...chatUsers, chatUser])
+
+            setChats([
+              ...chats,
+              {
+                id: uuidv4(),
+                text: `${chatUser.name} has joined the chat.`,
+                owner: undefined,
+                timestamp: new Date().getTime(),
+                type: ChatItemType.NOTIFICATION,
+              },
+            ])
+
+            setBusy(false)
+          }, 5000)
+        },
       }}
     >
       {children}
@@ -96,4 +104,3 @@ function ChatContextProvider({ children }: Props) {
 }
 
 export default ChatContextProvider
-

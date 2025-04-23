@@ -10,18 +10,17 @@ type ChatBoxDetailInputProps = {
 
 function ChatBoxDetailInput({
   isBottom,
-  setAutoScroll
+  setAutoScroll,
 }: ChatBoxDetailInputProps) {
-
-  const { chatText, setChatText, handleSubmitChat } = useChatContext()
+  const { chatText, setChatText, handleSubmitChat, busy } = useChatContext()
 
   return (
     <StyledChatBoxDetailInputWrapper>
-      <FormControl className="chat-input" variant="standard">
+      <FormControl className="chat-input" variant="standard" disabled={busy}>
         <Input
           value={chatText}
           onChange={(event: React.ChangeEvent<HTMLInputElement>) => {
-            setChatText(event.target.value);
+            setChatText(event.target.value)
           }}
           endAdornment={
             <InputAdornment position="end">
@@ -31,12 +30,13 @@ function ChatBoxDetailInput({
                   setAutoScroll(isBottom())
                   handleSubmitChat(chatText)
                 }}
+                disabled={busy}
               >
                 <SendIcon />
               </IconButton>
             </InputAdornment>
           }
-          onKeyDown={(e) => {
+          onKeyDown={e => {
             if (e.key === 'Enter') {
               setAutoScroll(isBottom())
               handleSubmitChat(chatText)

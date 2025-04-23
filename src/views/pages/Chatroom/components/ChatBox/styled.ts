@@ -13,5 +13,8 @@ export const StyledChatBoxWrapper = styled(Box)(({ theme }) => ({
   borderRadius: '2rem',
   [theme.breakpoints.up('md')]: {
     width: '80%'
+  },
+  '&.busy': {
+    filter: 'blur(2px)'
   }
 }))

@@ -1,5 +1,6 @@
 import { ChatItem } from '../../../../../types/chat'
 import { formatDate } from '../../../../../utils/format-date'
+import { useChatContext } from '../../contexts/chat-context'
 import {
   StyledChatBoxDetailItemWrapper,
   StyledChatBubbleWrapper,
@@ -10,10 +11,13 @@ type ChatBoxDetailItem = {
 }
 
 function ChatBoxDetailItem({ item }: ChatBoxDetailItem) {
+
+  const { chatUser } = useChatContext()
+
   return (
-    <StyledChatBoxDetailItemWrapper className="right">
+    <StyledChatBoxDetailItemWrapper className={chatUser?.id === item.owner?.id ? 'right' : 'left'}>
       <p className="chat-detail-item-name">
-        {item.owner.name} | {formatDate(item.timestamp)}
+        {item.owner?.name} | {formatDate(item.timestamp)}
       </p>
       <StyledChatBubbleWrapper>
         { item.text }

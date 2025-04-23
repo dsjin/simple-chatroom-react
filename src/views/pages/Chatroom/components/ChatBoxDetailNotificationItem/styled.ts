@@ -1,23 +1,16 @@
 import { styled } from '@mui/material/styles'
 import { Box } from '@mui/material'
 
-export const StyledChatBoxDetailItemWrapper = styled(Box)(({}) => ({
+export const StyledChatBoxDetailNotificationItemWrapper = styled(Box)(({}) => ({
   width: '100%',
   display: 'flex',
   flexDirection: 'column',
-  '&.left': {
-    alignItems: 'flex-start',
-  },
-  '&.right': {
-    alignItems: 'flex-end',
-  },
-  '& .chat-detail-item-name': {
-    marginTop: '0.25rem',
-    marginBottom: '0.25rem',
-  },
+  alignItems: 'center',
+  justifyContent: 'center',
+  marginBottom: '0.25rem',
 }))
 
-export const StyledChatBubbleWrapper = styled(Box)(({ theme }) => ({
+export const StyledChatNotificationBubbleWrapper = styled(Box)(({ theme }) => ({
   backgroundColor: 'white',
   borderRadius: '1rem',
   color: 'black',
@@ -29,5 +22,10 @@ export const StyledChatBubbleWrapper = styled(Box)(({ theme }) => ({
   overflowWrap: 'break-word',
   [theme.breakpoints.up('md')]: {
     maxWidth: '50%',
+  },
+  '& .chat-notification-item': {
+    marginTop: '0.25rem',
+    marginBottom: '0.25rem',
+    textAlign: 'center'
   },
 }))
