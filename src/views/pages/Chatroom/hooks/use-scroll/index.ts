@@ -26,14 +26,15 @@ function useScroll() {
     if (!elementRef.current) {
       return
     }
+    const innerRef = elementRef.current
     const scrollCb = () => {
       setAutoScroll(isBottom())
     }
     elementRef.current.addEventListener('scroll', scrollCb)
     return () => {
-      elementRef.current?.removeEventListener('scroll', scrollCb)
+      innerRef.removeEventListener('scroll', scrollCb)
     }
-  }, [elementRef])
+  }, [elementRef, isBottom])
 
   return {
     elementRef,

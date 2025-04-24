@@ -1,7 +1,7 @@
 import { styled } from '@mui/material/styles'
 import { Box } from '@mui/material'
 
-export const StyledChatBoxDetailInputWrapper = styled(Box)(({ theme }) => ({
+export const StyledChatBoxDetailInputWrapper = styled(Box)(({}) => ({
   display: 'flex',
   width: '100%',
   height: '60px',

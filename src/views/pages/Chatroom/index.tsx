@@ -1,6 +1,6 @@
 import ChatBox from './components/ChatBox'
 import LoadingOverlay from './components/LoadingOverlay'
-import ChatContextProvider from './contexts/chat-context'
+import ChatContextProvider from './contexts/chat-context/provider'
 import { StyledChatRoom } from './styled'
 
 function Chatroom() {

@@ -24,7 +24,7 @@ function ChatBoxDetail() {
     if (autoScroll) {
       toBottom()
     }
-  }, [chats])
+  }, [chats, autoScroll, toBottom])
 
   return (
     <StyledChatBoxDetailWrapper>
