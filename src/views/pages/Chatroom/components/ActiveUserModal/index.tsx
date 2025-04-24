@@ -1,6 +1,7 @@
-import { List, ListItem, ListItemText, Modal, Typography } from "@mui/material"
+import { Box, IconButton, List, ListItem, ListItemText, Modal, Typography } from "@mui/material"
 import { StyledActiveUserModalWrapper } from "./styled"
 import { ChatUser } from "../../../../../types/chat"
+import CloseIcon from '@mui/icons-material/Close'
 
 export type ActiveUserModalProps = {
   open: boolean
@@ -15,37 +16,27 @@ function ActiveUserModal ({
 }: ActiveUserModalProps) {
   return (
     <Modal
-      open={true}
+      open={open}
       onClose={handleClose}
     >
       <StyledActiveUserModalWrapper>
-        <Typography variant="h4" component="h1">
-          Active User
-        </Typography>
-        <List dense>
+        <Box className="header">
+          <Typography variant="h4" component="h1">
+            Active User
+          </Typography>
+          <IconButton
+            onClick={handleClose}
+          >
+            <CloseIcon />
+          </IconButton>
+        </Box>
+        <List dense className="list">
           <ListItem className="list-item">
             { 
-              [
-                ...items,
-                {
-                  id: 'test',
-                  name: 'test'
-                },
-                {
-                  id: 'test',
-                  name: 'test'
-                },
-                {
-                  id: 'test',
-                  name: 'test'
-                },
-                {
-                  id: 'test',
-                  name: 'test'
-                }
-              ].map((item: ChatUser) => {
+              items.map((item: ChatUser) => {
                 return (
                   <ListItemText
+                    key={item.id}
                     primary={item.name}
                   />
                 )

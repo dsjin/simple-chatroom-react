@@ -1,3 +1,4 @@
+import { Height } from '@mui/icons-material'
 import { Box } from '@mui/material'
 import { styled } from '@mui/material/styles'
 
@@ -16,8 +17,19 @@ export const StyledActiveUserModalWrapper = styled(Box)(({ theme }) => ({
     width: '50%',
     height: '50%',
   },
+  display: 'flex',
+  flexDirection: 'column',
+  '& .header': {
+    display: 'flex',
+    justifyContent: 'space-between',
+  },
+  '& .list': {
+    height: '100%',
+    overflowY: 'auto',
+    boxSizing: 'border-box'
+  },
   '& .list-item': {
     alignItems: 'flex-start',
-    flexDirection: 'column'
+    flexDirection: 'column',
   }
 }))
