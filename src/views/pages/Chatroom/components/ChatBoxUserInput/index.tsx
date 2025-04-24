@@ -13,7 +13,7 @@ import SendIcon from '@mui/icons-material/Send'
 import { v4 as uuidv4 } from 'uuid'
 
 function ChatBoxUserInput() {
-  const { handleNewChatUser, busy } = useChatContext()
+  const { handleSubmitChatUser, busy } = useChatContext()
   const [name, setName] = useState<string>('')
 
   return (
@@ -37,7 +37,7 @@ function ChatBoxUserInput() {
                   if (!name) {
                     return
                   }
-                  handleNewChatUser({
+                  handleSubmitChatUser({
                     id: uuidv4(),
                     name,
                   })
@@ -53,7 +53,7 @@ function ChatBoxUserInput() {
               if (!name) {
                 return
               }
-              handleNewChatUser({
+              handleSubmitChatUser({
                 id: uuidv4(),
                 name,
               })
