@@ -12,6 +12,7 @@ export const StyledActiveUserModalWrapper = styled(Box)(({ theme }) => ({
   boxShadow: '0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19)',
   padding: '1rem',
   borderRadius: '1rem',
+  color: 'black',
   [theme.breakpoints.up('md')]: {
     width: '50%',
     height: '50%',
